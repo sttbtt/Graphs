@@ -38,7 +38,6 @@ def main():
     # graph.add_directed_edge('5', '6')
     # graph.add_directed_edge('6', '7')
     
-    
     print(f'Graph Vertices: {graph.vertices}')
     print('Breath-First Traversal:')
     graph.bft('1')
