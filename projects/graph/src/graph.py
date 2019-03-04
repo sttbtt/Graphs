@@ -99,7 +99,7 @@ class Graph:
     def dft_recursion(self, starting_vertex_id, path = []):
         path.append(starting_vertex_id)
 
-        for neighbor in self.vertices:
+        for neighbor in self.vertices[starting_vertex_id]:
             if neighbor not in path:
                 path = self.dft_recursion(neighbor, path)
         
