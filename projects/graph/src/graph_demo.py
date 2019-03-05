@@ -11,6 +11,14 @@ from graph import Graph
 
 def main():
     graph = Graph()  # Instantiate your graph
+
+    # graph.add_vertex('0')
+    # graph.add_vertex('1')
+    # graph.add_vertex('2')
+    # graph.add_vertex('3')
+    # graph.add_edge('0', '1')
+    # graph.add_edge('0', '3')
+
     graph.add_vertex('1')
     graph.add_vertex('2')
     graph.add_vertex('3')
@@ -43,12 +51,14 @@ def main():
     graph.bft('1')
     print('Depth-First Traversal:')
     graph.dft('1')
-    print('Depth-First Recursion:')
-    print(graph.dft_recursion('1'))
+    print('Depth-First Recursion First:')
+    print(graph.dft_r_brady('1'))
+    print('Depth-First Recursion Second:')
+    print(graph.dft_r_brady('2'))
     print('Breadth-First Path:')
-    print(graph.BFS('2', '7'))
+    print(graph.bfs_brady('1', '6'))
     print('Depth-First Path:')
-    print(graph.DFS('2', '7'))
+    print(graph.dfs_brady('1', '6'))
 
 if __name__ == '__main__':
     # TODO - parse argv
