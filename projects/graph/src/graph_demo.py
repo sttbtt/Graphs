@@ -39,12 +39,16 @@ def main():
     # graph.add_directed_edge('6', '7')
     
     print(f'Graph Vertices: {graph.vertices}')
-    print('Breath-First Traversal:')
+    print('Breadth-First Traversal:')
     graph.bft('1')
     print('Depth-First Traversal:')
     graph.dft('1')
     print('Depth-First Recursion:')
     print(graph.dft_recursion('1'))
+    print('Breadth-First Path:')
+    print(graph.BFS('2', '7'))
+    print('Depth-First Path:')
+    print(graph.DFS('2', '7'))
 
 if __name__ == '__main__':
     # TODO - parse argv

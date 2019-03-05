@@ -105,3 +105,46 @@ class Graph:
         
         return path
 
+    def BFS(self, start, destination):
+         # Create an empty queue
+        q = Queue()
+        # Create an empty set of visited vertices
+        visited = []
+        # Put the starting vertex in our Queue
+        q.enqueue(start)
+        # While the queue is not empty
+        while q.size() > 0:
+            # Dequeue the first node from the queue
+            v = q.dequeue()
+            # If that node has not been visited...
+            if v not in visited:
+                # Mark it as visited
+                visited.append(v)
+                if v == destination:
+                    return visited
+                # Then, put all of it's children into the queue
+                for neighbor in self.vertices[v]:
+                    q.enqueue(neighbor)
+        return f'No path to: {destination}'
+
+    def DFS(self, start, destination):
+         # Create an empty queue
+        s = Stack()
+        # Create an empty set of visited vertices
+        visited = []
+        # Put the starting vertex in our Queue
+        s.push(start)
+        # While the queue is not empty
+        while s.size() > 0:
+            # Dequeue the first node from the queue
+            v = s.pop()
+            # If that node has not been visited...
+            if v not in visited:
+                # Mark it as visited
+                visited.append(v)
+                if v == destination:
+                    return visited
+                # Then, put all of it's children into the queue
+                for neighbor in self.vertices[v]:
+                    s.push(neighbor)
+        return f'No path to: {destination}'   
