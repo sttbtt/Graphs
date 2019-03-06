@@ -7,6 +7,22 @@ class User:
     def __repr__(self):
         return self.name
 
+class Queue():
+    def __init__(self):
+        self.queue = []
+    
+    def enqueue(self, value):
+        self.queue.append(value)
+
+    def dequeue(self):
+        if self.size() > 0:
+            return self.queue.pop(0)
+        else:
+            return None
+
+    def size(self):
+        return (len(self.queue))
+
 class SocialGraph:
     def __init__(self):
         self.lastID = 0
@@ -77,6 +93,31 @@ class SocialGraph:
         """
         visited = {}  # Note that this is a dictionary, not a set
         # !!!! IMPLEMENT ME
+       
+        # Create an empty queue
+        q = Queue()
+        # Put the path of the starting vertex in our Queue
+        q.enqueue([userID])
+        # While the queue is not empty
+        while q.size() > 0:
+            # Dequeue the first path from the queue
+            path = q.dequeue()
+            # Get the current node from the last element in the path
+            v = path[-1]
+            # If that node has not been visited...
+            if v not in visited:
+                # Mark it as visited
+                visited[v] = path
+                # Then, put paths all of it's children into the queue
+                for friendID in self.friendships[v]:
+                    if friendID not in visited:
+                        # Copy the path into a new instance
+                        new_path = list(path)
+                        # Append the friendID to the end of the path
+                        new_path.append(friendID)
+                        # Enqueue
+                        q.enqueue(new_path)
+
         return visited
 
 
@@ -85,8 +126,8 @@ if __name__ == '__main__':
     sg.populateGraph(10, 2)
     # print(sg.users)
     print(sg.friendships)
-    # connections = sg.getAllSocialPaths(1)
-    # print(connections)
+    connections = sg.getAllSocialPaths(8)
+    print(connections)
 
 
 
