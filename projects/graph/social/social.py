@@ -61,7 +61,7 @@ class SocialGraph:
         random.shuffle(possibleFriendships)
         # print(possibleFriendships[:20])
         # print(len(possibleFriendships))
-        for i in range(1, numUsers * avgFriendships):
+        for i in range(1, (numUsers * avgFriendships) // 2):
             self.addFriendship(*possibleFriendships[i])
 
 
