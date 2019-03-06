@@ -125,8 +125,10 @@ if __name__ == '__main__':
     sg = SocialGraph()
     sg.populateGraph(10, 2)
     # print(sg.users)
+    print('Friendships --------')
     print(sg.friendships)
     connections = sg.getAllSocialPaths(8)
+    print('Connections --------')
     print(connections)
 
 
