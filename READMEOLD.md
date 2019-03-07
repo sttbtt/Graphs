@@ -12,4 +12,3 @@
 ## Projects
 
 * [Random Social Network](projects/graph)
-* [Aventure Map Traversal](projects/adventure)

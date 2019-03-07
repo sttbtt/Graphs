@@ -79,6 +79,8 @@ class SocialGraph:
         # print(len(possibleFriendships))
         for i in range(1, (numUsers * avgFriendships) // 2):
             self.addFriendship(*possibleFriendships[i])
+        # for friendship in possibleFriendships[: (numUsers * avgFriendships) // 2]:
+        #     self.addFriendship((friendship[0], friendship[1]))
 
 
 
