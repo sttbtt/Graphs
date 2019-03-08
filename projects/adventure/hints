@@ -1,0 +1,10 @@
+
+While the map is not completely expolored
+    For your current room
+        If the room doesn't exist, initialize your room graph with '?' exists
+        Update the graph entry for previous room
+    If there is an unexplored exit in the current room (a '?' exit), travel in that direction
+    Else, find the nearest room with and unexplored exit and travel there
+        Call BFS to find nearest unexplored
+        Convert room IDs to traversal path
+        Walk along that traversal path
