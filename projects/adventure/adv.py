@@ -26,7 +26,7 @@ world.printRooms()
 
 
 print('********\n')
-print(f'Length of Room Graph: {len(roomGraph)}')
+# print(f'Length of Room Graph: {len(roomGraph)}')
 
 # print(player.currentRoom.id)
 # print(player.currentRoom.getExits())
@@ -68,8 +68,8 @@ def exit_direction():
 
 previousRoom = None
 dirToMove = None
-print(f'Initial Current Room: {player.currentRoom.id}')
-print(f'Initial Current room exits: {player.currentRoom.getExits()}')
+# print(f'Initial Current Room: {player.currentRoom.id}')
+# print(f'Initial Current room exits: {player.currentRoom.getExits()}')
 
 
 while len(graph) < len(roomGraph):
@@ -88,43 +88,44 @@ while len(graph) < len(roomGraph):
         # graph[4]['s'] = 0
  
     # If there is an unexplored exit in the current room (a '?' exit), travel in that direction
-    print(f'Current Room: {player.currentRoom.id}')
+    # print(f'Current Room: {player.currentRoom.id}')
     currentRoomExits = graph[player.currentRoom.id]
-    print(f'Current Room Exits: {currentRoomExits}')
+    # print(f'Current Room Exits: {currentRoomExits}')
     direction = [k for k, v in currentRoomExits.items() if v == '?']
-    print(f'Direction: {direction}')
+    # print(f'Direction: {direction}')
 
     if direction:
-        dirToMove = direction[0]
-        print(f'dirToMove: {dirToMove}')
+        x = random.randint(0, len(direction) - 1)
+        dirToMove = direction[x]
+        # print(f'dirToMove: {dirToMove}')
         previousRoom = player.currentRoom.id
-        print(f'Previous Room: {previousRoom}')
+        # print(f'Previous Room: {previousRoom}')
         player.travel(dirToMove)
         traversalPath.append(dirToMove)
     # Else, find the nearest room with and unexplored exit and travel there
     else:
         # Call BFS to find nearest unexplored
-        nearest_room = find_nearest_unexplored(player.currentRoom.id, graph)
+        nearest_room_path = find_nearest_unexplored(player.currentRoom.id, graph)
         path = []
-        print(f'Nearest Room: {nearest_room}')
-        if nearest_room == None:
+        # print(f'Nearest Room: {nearest_room}')
+        if nearest_room_path == None:
             break
         # Convert room IDs to traversal path
-        for i in range(len(nearest_room) - 1):
+        for i in range(len(nearest_room_path) - 1):
             # x = graph[nearest_room[i+1]].get(nearest_room[i])
-            directions = graph[nearest_room[i]]
-            print(f'Nearest Room Directions: {directions}')
+            directions = graph[nearest_room_path[i]]
+            # print(f'Nearest Room Directions: {directions}')
             for k, v in directions.items():
-                if v == nearest_room[i+1]:
+                if v == nearest_room_path[i+1]:
                     path.append(k)
 
+        # Walk along that traversal path
         for p in path:
             player.travel(p)
             traversalPath.append(p)
         previousRoom = None
-        print(f'Player Current Room id: {player.currentRoom.id}')
-        # Walk along that traversal path
-        print(f'Path: {path}')
+        # print(f'Player Current Room id: {player.currentRoom.id}')
+        # print(f'Path: {path}')
 
 
 
@@ -147,7 +148,7 @@ rooms_visited = []
 for k, v in graph.items():
     rooms_visited.append(k)
 rooms_visited.sort()
-print(f'Rooms Visited: {rooms_visited}')
+# print(f'Rooms Visited: {rooms_visited}')
 for i in range(len(rooms_visited) - 1):
     if rooms_visited[i] + 1 != rooms_visited[i + 1]:
         print(f'Missing Room: {rooms_visited[i] + 1}')
